@@ -26,7 +26,8 @@ angular
       })
       .when('/algorithms', {
         templateUrl: 'views/algorithms.html',
-        controller: 'AlgoCtrl'
+        controller: 'AlgoCtrl',
+        controllerAs: 'algos'
       })
       .otherwise({
         redirectTo: '/'

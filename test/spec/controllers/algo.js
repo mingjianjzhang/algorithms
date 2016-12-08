@@ -17,17 +17,52 @@ describe('Controller: AlgoCtrl', function () {
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(AlgoCtrl.awesomeThings.length).toBe(3);
+  // describe("linearSearch", function(){
+
+  //     it("should take two values, a number and an array, and return the index of that number in the array if it exists, or false if it doesn't", function(){
+  //         var arr = [1, 5, 7, 6];
+  //         expect(AlgoCtrl.linearSearch(7, arr)).toBe("2");
+  //         expect(AlgoCtrl.linearSearch(14, arr)).toBe(false);
+  //     })
+  // })
+
+  describe("iSum", function(){
+      it("should, given a value, return the sum of all integers up to and including that number", function(){
+          AlgoCtrl.algorithms[1].func(5); 
+          expect(scope.result).toBe(15);
+      })
   });
 
-  it('should initialize with a test variable attached that contains "My life is in shambles"', function(){
-    expect(AlgoCtrl.test).toBe("My life is in shambles.");
+  describe("iFactorial", function(){
+      it("should, given a number, return the factorial of that number", function(){
+          expect(AlgoCtrl.iFactorial(5)).toBe(120);
+      });
   });
 
-  it("linearSearch should take two values, a number and an array, and return the index of that number in the array if it exists, or false if it doesn't", function(){
-      var arr = [1, 5, 7, 6];
-      expect(AlgoCtrl.linearSearch(7, arr)).toBe("2");
-      expect(AlgoCtrl.linearSearch(14, arr)).toBe(false);
-  })
+  // describe("rFactorial", function(){
+  //     it("should calculate the factorial of a number recursively", function(){
+  //         expect(AlgoCtrl.rFactorial(5)).toBe(120);
+  //     })
+  // })
+
+  // describe("iFibonacci", function(){
+  //     it("should, when given a number greater than 1, calculate the correct value in the Fibonacci sequence", function(){
+  //         expect(AlgoCtrl.iFibonacci(6)).toBe(8);
+  //     });
+
+  //     it("should, when given a number less than 2, return that number", function(){
+  //         expect(AlgoCtrl.iFibonacci(1)).toBe(1);
+  //         expect(AlgoCtrl.iFibonacci(0)).toBe(0);
+  //     })
+  // }) 
+  // describe("rFibonacci", function(){
+  //     it("should, when given a number greater than 1, calculate the correct value in the Fibonacci sequence", function(){
+  //         expect(AlgoCtrl.rFibonacci(6)).toBe(8);
+  //     });
+
+  //     it("should, when given a number less than 2, return that number", function(){
+  //         expect(AlgoCtrl.rFibonacci(1)).toBe(1);
+  //         expect(AlgoCtrl.rFibonacci(0)).toBe(0);
+  //     })
+  // })
 });
