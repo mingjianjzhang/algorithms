@@ -14,7 +14,7 @@ angular.module('algorithmsApp')
       'AngularJS',
       'Karma'
     ];
- 
+ 	var _this = this;
  	this.number = 9;
 
  	var linearSearch = {
@@ -22,11 +22,11 @@ angular.module('algorithmsApp')
  		func: function (num, arr){
 	    		for (var i in arr){
 	    			if (num == arr[i]) {
-	    				$scope.result = i;
+	    				_this.result = i;
 	    				return i;
 	    			}
 	    		}
-	    		$scope.result = false;
+	    		_this.result = false;
 	    		return false;
 	    	}
     	}
@@ -37,7 +37,8 @@ angular.module('algorithmsApp')
 	    		for (var i = 1; i <= num; i++){
 	    			sum+=i;
 	    		}
-	    		$scope.result = sum;
+	    		_this.result = sum;
+	    		return sum;
 		}
     	}
  	
@@ -50,7 +51,8 @@ var iFactorial = {
 	    		for(var i = 1; i <= num; i++){
 	    			factorial*=i;
 	    		}
-	    		$scope.result = factorial;
+	    		_this.result = factorial;
+	    		return factorial;
 	    	}
     	}
 function rFact(num){
@@ -65,7 +67,8 @@ function rFact(num){
 var rFactorial = {
 	title: "rFactorial",
 	func: function(num){
-		$scope.result = rFact(num);
+		_this.result = rFact(num);
+		return rFact(num);
 	}
 }
 
@@ -74,7 +77,7 @@ var iFibonacci = {
 	title: "iFibonacci",
 	func: function (num){
   		if (num < 2){
-  			console.log(num);
+  			_this.result = num;
   			return num;
   		}
   		var first = 0;
@@ -86,7 +89,8 @@ var iFibonacci = {
     			second = parseInt(fib);
     		}
 
-    		$scope.result = fib;
+    		_this.result = fib;
+
     }
 }
     
@@ -99,16 +103,83 @@ var iFibonacci = {
     var rFibonacci = {
     		title: "rFibonacci",
     		func: function(num){
-    			$scope.result = rFib(num);
+    			_this.result = rFib(num);
+    			return rFib(num);
     		}
     }
+
+    function rBS(arr, num, beg, end){
+    	// you want to exit the recursive function when you've found the number, or when there are no values remaining to search
+    		if (!beg) {
+	    		beg = 0;
+    		}
+    		if (!end) {
+    			end = arr.length-1;
+    		}
+    		var mid = Math.floor((beg + end)/2);
+    		if (arr[mid] == num) {
+    			return mid;
+    		}
+    		if (beg == end) {
+    			return false;
+    		}
+    		if (arr[mid] < num) {
+    			return rBS(arr, num, mid + 1, end);
+    		}
+    		if (arr[mid] > num) {
+    			return rBS(arr, num, beg, mid - 1);
+    		}
+
+    }
+    var rBinarySearch = {
+    		title: "Recursive Binary Search",
+    		func: function(arr, num){
+    			_this.result = rBS(arr, num);
+    			return rBS(arr, num);
+    		}
+    }
+
+    var iBinarySearch = {
+    		title: "Iterative Binary Search",
+    		func: function(arr, num){
+    			var beg = 0,
+    				end = arr.length-1,
+    				mid;
+    			while (beg != end) {
+    				mid = Math.floor((beg+end)/2);
+    				if (arr[mid] == num) {
+    					_this.result = mid;
+    					return mid;
+    				}
+    				if (num > arr[mid]) {
+    					beg = mid + 1;
+    				}
+    				if (num < arr[mid]) {
+    					end = mid - 1;
+    				}
+    			}
+    			_this.result = false;
+    			return false;
+    		}
+    }
+
+    var bubbleSort = {
+    		title: "Bubble Sort",
+    		func: function(arr) {
+
+    		}
+    }
+
     this.algorithms = [
-    		linearSearch,
-    		iSum,
-    		iFactorial,
-    		rFactorial,
-    		iFibonacci,
-    		rFibonacci
+    		linearSearch, //0
+    		iSum, // 1
+    		iFactorial, // 2
+    		rFactorial, // 3
+    		iFibonacci, // 4
+    		rFibonacci, // 5
+    		rBinarySearch, // 6
+    		iBinarySearch, // 7
+    		bubbleSort // 8
     ]
 
   });

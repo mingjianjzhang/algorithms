@@ -8,7 +8,7 @@
 		</div>
 		<div class="col-md-6">
 			<p><strong> Result</strong> </p>
-			<p class="alert alert-success">{{result}}</p>
+			<p class="alert alert-success">{{algos.result}}</p>
 		</div>
 	<div class="algorithm">
 		<button class="btn btn-primary" ng-repeat="algo in algos.algorithms track by $index" ng-click="algo.func(algos.number)">{{algo.title}}</button>
