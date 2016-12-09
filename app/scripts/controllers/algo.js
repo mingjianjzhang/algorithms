@@ -166,10 +166,100 @@ var iFibonacci = {
     var bubbleSort = {
     		title: "Bubble Sort",
     		func: function(arr) {
-
+    			// stop at the value before the last value in the array
+    			for (var j = arr.length-1; j > 0; j--) {
+	    			for (var i = 0; i < j; i++) {
+	    				if (arr[i] > arr[i+1]){
+	    					var temp = arr[i];
+	    					//swap
+	    					arr[i] = arr[i+1];
+	    					arr[i+1] = temp;
+	    				}
+	    			}
+    			}
+    			_this.result = arr;
+    			return arr;
     		}
-    }
+    	}
 
+    	var selectionSort = {
+    		title: "Selection Sort",
+    		func: function(arr){
+    			var i = 0;
+    			while (i < arr.length-1) {
+    				//find the min value
+    				var min = i;
+    				for (var j = i+1; j < arr.length; j++){
+    					if (arr[j] < arr[min]) {
+    						min = j;
+    					}
+    				}
+    				//swap the minimum with the first value in the unsorted portion of the array;
+    				var temp = arr[i];
+    				arr[i] = arr[min];
+    				arr[min] = temp;
+    				i++;
+    			}
+    			_this.result = arr;
+    			return arr;
+    		}
+    	}
+    	var insertionSort = {
+    		title: "Insertion Sort",
+    		func: function(arr){
+    			for (var i = 1; i < arr.length; i++) {
+    				var toInsert = arr[i];
+    				var j = i;
+    				while (arr[j-1] > toInsert && j>0) {
+    					arr[j] = arr[j-1];
+    					j--;
+    				}
+    				arr[j] = toInsert;
+    			}
+    			_this.result = arr;
+    			return arr;
+    		}
+
+    	}
+    	var mergeSort = {
+    		title: "Merge Sort",
+    		func: function(arr1, arr2) {
+    			var sortedArr = [];
+    			var i = 0,
+    				j = 0;
+    			while (i < arr1.length && j < arr2.length){
+    				if (arr1[i] < arr2[j]) {
+    					sortedArr.push(arr1[i]);
+    					i++;
+    				} else if (arr1[i] > arr2[j]) {
+    					sortedArr.push(arr2[j]);
+    					j++;
+    				} else {
+    					sortedArr.push(arr1[i]);
+    					sortedArr.push(arr2[j]);
+    					i++;
+    					j++;
+    				}
+    			}
+    			// check to see if all values have been pushed.
+    			if (arr1.length + arr2.length == sortedArr.length) {
+    				_this.result = sortedArr;
+    				return sortedArr;
+    			}
+    			if (i < arr1.length){
+    				var idx = i;
+    				var leftOver = arr1;
+    			} else {
+    				var idx = j;
+    				var leftOver = arr2;
+    			}
+    			for (idx; idx < leftOver.length; idx++){
+    				sortedArr.push(leftOver[idx]);
+    			}
+    			_this.result = sortedArr;
+    			return sortedArr;
+    		}
+    	}
     this.algorithms = [
     		linearSearch, //0
     		iSum, // 1
@@ -179,7 +269,10 @@ var iFibonacci = {
     		rFibonacci, // 5
     		rBinarySearch, // 6
     		iBinarySearch, // 7
-    		bubbleSort // 8
+    		bubbleSort, // 8 compare adjacent values, putting the largest number to the right, repeat til sorted
+    		selectionSort, // 9 find the min, place it at the beginning, move the beginning index one to the right, repeat tili sorted
+    		insertionSort, //10
+    		mergeSort
     ]
 
   });

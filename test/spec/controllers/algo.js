@@ -111,10 +111,34 @@ describe("iBS", function(){
 describe("bubbleSort", function(){
     it("should bubble sort a given unsorted array", function(){
         var arr = [24, -9, 0, 245, 99, 10];
-        AlgoCtrl.algorithms[8].func(arr);
-        expect(AlgoCtrl.result).toBe([-9, 0, 10, 24, 99, 245]);
+        //NOTE: toBe expects the exact same object, toEqual merely checks equivalence;
+        expect(AlgoCtrl.algorithms[8].func(arr)).toEqual([-9, 0, 10, 24, 99, 245]);
+        expect(AlgoCtrl.result).toEqual([-9, 0, 10, 24, 99, 245]);
     })
 })
+describe("selectionSort", function(){
+    it("should selection sort a given unsorted array", function(){
+        var arr = [24, -9, 0, 245, 99, 10, 42, -90, -90];
+        AlgoCtrl.algorithms[9].func(arr);
+        expect(AlgoCtrl.result).toEqual([-90, -90, -9, 0, 10, 24, 42, 99, 245]);
+    })
+})
+describe("insertionSort", function(){
+    it("should insertion sort a given unsorted array", function(){
+        var arr = [24, -9, 0, 245, 99, 10, 42, -90, -90];
+        AlgoCtrl.algorithms[10].func(arr);
+        expect(AlgoCtrl.result).toEqual([-90, -90, -9, 0, 10, 24, 42, 99, 245]);
+    })
+})
+describe("mergeSort", function(){
+    it("should merge sort a two given sorted arrays", function(){
+        var arr1 = [1, 4, 5, 7, 7, 9];
+        var arr2 = [-9, 4, 6, 8];
+        AlgoCtrl.algorithms[11].func(arr1, arr2);
+        expect(AlgoCtrl.result).toEqual([-9, 1, 4, 4, 5, 6, 7, 7, 8, 9]);
+    })
+})
+
 
 
 
