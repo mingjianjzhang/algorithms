@@ -137,7 +137,15 @@ describe("mergeSort", function(){
         AlgoCtrl.algorithms[11].func(arr1, arr2);
         expect(AlgoCtrl.result).toEqual([-9, 1, 4, 4, 5, 6, 7, 7, 8, 9]);
     })
+});
+
+describe("convertStringToArray", function(){
+    it("should, given a string of numbers separated by a comma and a space, convert it into a numerical array", function(){
+        var stringArr= "4, 5, 6, 7";
+        expect(AlgoCtrl.convertStringToArray(stringArr)).toEqual([4, 5, 6, 7])
+    })
 })
+
 
 
 

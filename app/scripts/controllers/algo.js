@@ -15,7 +15,11 @@ angular.module('algorithmsApp')
       'Karma'
     ];
  	var _this = this;
- 	this.number = 9;
+ 	this.number
+ 	this.convertStringToArray = function(string){
+ 		this.result = string.split(", ").map(Number);;
+ 		return string.split(", ").map(Number);
+ 	}
 
  	var linearSearch = {
  		title: "Linear Search",
@@ -260,6 +264,7 @@ var iFibonacci = {
     			return sortedArr;
     		}
     	}
+    	// consider passing in a list of params
     this.algorithms = [
     		linearSearch, //0
     		iSum, // 1
@@ -272,7 +277,7 @@ var iFibonacci = {
     		bubbleSort, // 8 compare adjacent values, putting the largest number to the right, repeat til sorted
     		selectionSort, // 9 find the min, place it at the beginning, move the beginning index one to the right, repeat tili sorted
     		insertionSort, //10
-    		mergeSort
+    		mergeSort, //11
     ]
 
   });

@@ -5,12 +5,24 @@
 				<label for ="number">Number </label>
 				<input type="text" class="form-control" ng-model="algos.number">
 			</div>
+			<div class="form-group">
+				<label for ="number">Array 1 </label>
+				<input type="text" class="form-control" ng-model="algos.arr1">
+				<button class="btn btn-warning" ng-click="algos.convertStringToArray(algos.arr1)">
+				Convert To Array
+				</button>
+			</div>
+			<div class="form-group">
+				<label for ="number">Array 2 </label>
+				<input type="text" class="form-control" ng-model="algos.arr2">
+			</div>
+
 		</div>
 		<div class="col-md-6">
 			<p><strong> Result</strong> </p>
 			<p class="alert alert-success">{{algos.result}}</p>
 		</div>
 	<div class="algorithm">
-		<button class="btn btn-primary" ng-repeat="algo in algos.algorithms track by $index" ng-click="algo.func(algos.number)">{{algo.title}}</button>
+		<button class="btn btn-primary" ng-repeat="algo in algos.algorithms track by $index" ng-click="algo.func(algos.number, algos.convertStringToArray(algos.arr1),algos.convertStringToArray(algos.arr2))">{{algo.title}}</button>
 	</div>
 </div>
